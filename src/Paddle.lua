@@ -20,6 +20,7 @@ Paddle = Class{}
     of the world horizontally, toward the bottom.
 ]]
 function Paddle:init(skin)
+    self.name = 'paddle'
     -- x is placed in the middle
     self.x = VIRTUAL_WIDTH / 2 - 32
 

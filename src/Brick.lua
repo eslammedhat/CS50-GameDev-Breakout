@@ -51,6 +51,7 @@ paletteColors = {
 }
 
 function Brick:init(x, y)
+    self.name = 'brick'
     -- used for coloring and score calculation
     self.tier = 0
     self.color = 1
