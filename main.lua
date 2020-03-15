@@ -125,6 +125,7 @@ function love.load()
     -- play our music outside of all states and set it to looping
     gSounds['music']:play()
     gSounds['music']:setLooping(true)
+    isMusicPaused = false
 
     -- a table we'll use to keep track of which keys have been pressed this
     -- frame, to get around the fact that LÖVE's default callback won't let us
@@ -153,6 +154,18 @@ end
 function love.update(dt)
     -- this time, we pass in dt to the state object we're currently using
     gStateMachine:update(dt)
+
+    -- mute music 
+    if love.keyboard.wasPressed('m') then
+        if (isMusicPaused) then
+            gSounds['music']:play()
+            isMusicPaused = false
+        else
+            gSounds['music']:pause()
+            isMusicPaused = true
+        end
+
+    end
 
     -- reset keys pressed
     love.keyboard.keysPressed = {}
