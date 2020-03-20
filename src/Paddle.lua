@@ -15,6 +15,14 @@
 
 Paddle = Class{}
 
+paddleWidth = {
+    [1] = 32,
+    [2] = 64,
+    [3] = 96,
+    [4] = 128
+}
+
+
 --[[
     Our Paddle will initialize at the same spot every time, in the middle
     of the world horizontally, toward the bottom.
@@ -31,7 +39,7 @@ function Paddle:init(skin)
     self.dx = 0
 
     -- starting dimensions
-    self.width = 64
+    self.width = paddleWidth[2]
     self.height = 16
 
     -- the skin only has the effect of changing our color, used to offset us
@@ -42,6 +50,7 @@ function Paddle:init(skin)
     -- is the starting size, as the smallest is too tough to start with
     self.size = 2
 end
+
 
 function Paddle:update(dt)
     -- keyboard input

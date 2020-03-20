@@ -32,6 +32,7 @@ function PlayState:enter(params)
     self.balls = {} 
     self.numBalls = 1
     self.recoverPoints = 5000
+    self.paddlePoints = 7000
 
     -- give ball random starting velocity
     self.ball.dx = math.random(-200, 200)
@@ -107,6 +108,19 @@ function PlayState:update(dt)
                     -- play recover sound effect
                     gSounds['recover']:play()
                 end
+
+                -- if we have enough points, upgrade paddle size
+                if self.score > self.paddlePoints then
+                    -- can't go above 3 health
+                    self.paddle.size = math.min(4, self.paddle.size + 1)
+                    self.paddle.width = paddleWidth[self.paddle.size]
+                    -- multiply paddle points by 2
+                    self.paddlePoints = math.min(140000, self.paddlePoints * 2)
+                    -- play recover sound effect
+                    gSounds['powerup']:play()
+                end
+
+
 
                 -- spawn a powerup randomly
                 if(math.random(0, 100) < 7) then
@@ -192,6 +206,9 @@ function PlayState:update(dt)
                         highScores = self.highScores
                     })
                 else
+                    -- shrink paddle
+                    self.paddle.size = math.max(1, self.paddle.size - 1)
+                    self.paddle.width = paddleWidth[self.paddle.size]
                     gStateMachine:change('serve', {
                         paddle = self.paddle,
                         bricks = self.bricks,

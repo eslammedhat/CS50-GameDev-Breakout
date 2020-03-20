@@ -11,7 +11,6 @@
     simply display "Breakout" in large text, as well as a message to press
     Enter to begin.
 ]]
-
 PaddleSelectState = Class{__includes = BaseState}
 
 function PaddleSelectState:enter(params)
