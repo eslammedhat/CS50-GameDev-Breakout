@@ -138,7 +138,8 @@ function PlayState:update(dt)
                         score = self.score,
                         highScores = self.highScores,
                         ball = self.ball,
-                        recoverPoints = self.recoverPoints
+                        recoverPoints = self.recoverPoints,
+                        paddlePoints = self.paddlePoints
                     })
                 end
 
@@ -216,7 +217,8 @@ function PlayState:update(dt)
                         score = self.score,
                         highScores = self.highScores,
                         level = self.level,
-                        recoverPoints = self.recoverPoints
+                        recoverPoints = self.recoverPoints,
+                        paddlePoints = self.paddlePoints
                     })
                 end
             end
